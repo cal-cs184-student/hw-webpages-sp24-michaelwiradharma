@@ -35,6 +35,9 @@
 	<br><br>
 
 	<div>
+		<p>Link to github-pages: <a
+				href="https://cal-cs184-student.github.io/hw-webpages-sp24-michaelwiradharma/hw1/index.html">https://cal-cs184-student.github.io/hw-webpages-sp24-michaelwiradharma/hw1/index.html</a>
+		</p>
 
 		<h2 align="middle">Overview</h2>
 		<p>Give a high-level overview of what you implemented in this homework Think about what you've built as a whole.
@@ -80,18 +83,80 @@
 
 		<section>
 			<h3 align="middle">Part 3: Transforms</h3>
-			<p></p>
+			<p>Modifying the transformation matrices for this section was very straightforward, simply following the
+				ones as taught in lecture.</p>
+			<p>The image below is an attempt at representing cubeman sitting down cross-legged on the floor, waving hi
+				at the viewer.</p>
+			<div style="display:flex; justify-content: center;">
+				<img src="images/Task3_1.png" style="width: 400px;" />
+			</div>
 		</section>
-
-
-
 
 		<h2 align="middle">Section II: Sampling</h2>
 
-		<h3 align="middle">Part 4: Barycentric coordinates</h3>
+		<section>
+			<h3 align="middle">Part 4: Barycentric coordinates</h3>
+			<p>Barycentric coordinates give you a way to represent coordinates within a triangle as a weighted average
+				of the vertices. The coordinates are these weights respectively. Each weight can be calculated as a
+				percentage of the distance from an edge to the vertice of the triangle. This is represented in the
+				drawing below.</p>
+			<div class="img" style="display:flex; justify-content: center;">
+				<img src="images/Task4_2.jpeg" width=400>
+			</div>
+			<div class="img" style="display:flex; align-items: center; flex-direction: column;">
+				<img src="images/Task4_1.png" width=400 />
+				<figcaption>Color wheel image (test7.svg)</figcaption>
+			</div>
+		</section>
 
+		<section>
+			<h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
 
-		<h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
+			<p>We learned two types of pixel sampling in lecture: nearest and bilinear. Sampling in this case is done in
+				order to match the triangles to their respective textures. Nearest sampling acts almost like a direct
+				translation from the frame's coordinates to the texture's coordinates. On the other hand, bilinear
+				sampling attempts to smooth the textures by supersampling a 2x2 section of the nearest texture's pixels.
+				The implementation I used follows this logic directly, where nearest neighbor sampling was done simply
+				through rounding and bilinear through sampling the four coordinates and performing linear interpolation
+				to get the average.
+			</p>
+			<div align="middle">
+				<table style="width: 100%">
+					<tr>
+						<td>
+							<img src="images/Task5_1.png" align="middle" width="400px" />
+							<figcaption align="middle">Fig1: Nearest, 1x</figcaption>
+						</td>
+						<td>
+							<img src="images/Task5_2.png" align="middle" width="400px" />
+							<figcaption align="middle">Fig2: Bilinear, 1x</figcaption>
+						</td>
+					</tr>
+					<br>
+					<tr>
+						<td>
+							<img src="images/Task5_4.png" align="middle" width="400px" />
+							<figcaption align="middle">Fig3: Nearest, 16x</figcaption>
+						</td>
+						<td>
+							<img src="images/Task5_3.png" align="middle" width="400px" />
+							<figcaption align="middle">Fig4: Bilinear, 16x</figcaption>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<p>The differences are a lot more subtle than the changes between 1pixel and 16pixel supersampling. However,
+				between the left and right columns, especially between <em>Figure 1</em> and <em>Figure 2</em>, one can
+				identify through the pixel inspector that the textures are smoother on the right image. This is bilinear
+				sampling attempting to smooth out the sharp changes in color from the texture.</p>
+			<p>
+				In general, bilinear is likely to excel in situations where objects in the image 'appear' far away,
+				especially when sharp changes in color (higher frequencies) are present nearby. This is when there are
+				likely to be larger differences between the two, as nearest sampling won't perform any blending, but
+				bilinear will.
+			</p>
+
+		</section>
 
 
 		<h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
@@ -104,34 +169,6 @@
 		<h3 align="middle">Part 7: Draw something interesting!</h3>
 
 
-
-
-
-		<div align="middle">
-			<table style="width: 100%">
-				<tr>
-					<td>
-						<img src="images/image1.png" align="middle" width="400px" />
-						<figcaption align="middle">Caption goes here.</figcaption>
-					</td>
-					<td>
-						<img src="images/image2.png" align="middle" width="400px" />
-						<figcaption align="middle">Caption goes here.</figcaption>
-					</td>
-				</tr>
-				<br>
-				<tr>
-					<td>
-						<img src="images/image3.png" align="middle" width="400px" />
-						<figcaption align="middle">Caption goes here.</figcaption>
-					</td>
-					<td>
-						<img src="images/image4.png" align="middle" width="400px" />
-						<figcaption align="middle">Caption goes here.</figcaption>
-					</td>
-				</tr>
-			</table>
-		</div>
 
 
 
