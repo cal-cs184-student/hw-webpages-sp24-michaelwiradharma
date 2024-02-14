@@ -1,7 +1,140 @@
-<html>
-	<head>
-	</head>
-	<body>
-		Homework 1 index.html here
-	</body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<style>
+		body {
+			padding: 100px;
+			width: 1000px;
+			margin: auto;
+			text-align: left;
+			font-weight: 300;
+			font-family: 'Open Sans', sans-serif;
+			color: #121212;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4 {
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+	</style>
+	<title>CS 184/284A Rasterizer</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+
+<body>
+
+	<h1 align="middle">CS 184/284A: Computer Graphics and Imaging, Spring 2024</h1>
+	<h1 align="middle">Homework 1: Rasterizer</h1>
+	<h2 align="middle">Michael Wiradharma</h2>
+
+	<br><br>
+
+	<div>
+
+		<h2 align="middle">Overview</h2>
+		<p>Give a high-level overview of what you implemented in this homework Think about what you've built as a whole.
+			Share your thoughts on what interesting things you've learned from completing the homework.</p>
+
+		<h2 align="middle">Section I: Rasterization</h2>
+
+		<section style="width: 100%; justify-content: center; display:flex; flex-direction: column;">
+			<h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
+			<p>In this section, I wrote a rasterization algorithm which incorporates 3 separate line tests to check for
+				whether a point lies within the given triangle. I made use of the `Triangulation::inside` function to do
+				this, then used `fill_pixel` to color the pixel at that specific (x,y) coordinate to color the triangle.
+				At
+				a higher level, I looped through every pixel which lies within
+				the triangle, bounding the min and max coordinates of the triangles vertices to ensure the algorithm
+				does
+				not iterate through the entire frame buffer for each call to `rasterize_triangle`.</p>
+
+
+			<img src="images/Task1_1.png" style="align-self: center;" width="700px" />
+		</section>
+
+		<section>
+			<h3 align="middle">Part 2: Antialiasing triangles</h3>
+			<p>For task 2, I made use of the suggested data structures (i.e. sample_buffer) and modified some functions
+				in the rest of the rasterization pipeline to implement antialiasing via supersampling. Firstly, I
+				increased the size of the sample_buffer array by a factor of the sample_rate. Then, through the same
+				algorithm from `rasterize_triangle`, I place each of the supersampled pixels into the sample buffer.
+				Finally, inside rasterize_triangle, I averaged the color value of each picture according to the
+				super-sampled pixels from the sample_buffer; this is exactly as shown in lecture.</p>
+			<p>Supersampling is useful because it reduces "jaggies", or the sharp edges that makes pictures look rough
+				or less sharp from a distance. This is shown in the images below (in order, super-sampled by factors of:
+				1, 4 ,16). The image super-sampled by a factor of 16 looks much sharper than the first image.</p>
+			<div class="images"
+				style="display:flex; flex-direction: column; width: 100%; align-items: center; justify-content: center;">
+				<div stlye="display:flex; flex-direction: row">
+					<img src="images/Task2_1.png" style="width: 400px;" />
+					<img src="images/Task2_2.png" style="width: 400px;" />
+				</div>
+				<img src="images/Task2_3.png" style="width: 400px;" />
+			</div>
+		</section>
+
+		<section>
+			<h3 align="middle">Part 3: Transforms</h3>
+			<p></p>
+		</section>
+
+
+
+
+		<h2 align="middle">Section II: Sampling</h2>
+
+		<h3 align="middle">Part 4: Barycentric coordinates</h3>
+
+
+		<h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
+
+
+		<h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
+
+
+
+		<h2 align="middle">Section III: Art Competition</h2>
+		<p>If you are not participating in the optional art competition, don't worry about this section!</p>
+
+		<h3 align="middle">Part 7: Draw something interesting!</h3>
+
+
+
+
+
+		<div align="middle">
+			<table style="width: 100%">
+				<tr>
+					<td>
+						<img src="images/image1.png" align="middle" width="400px" />
+						<figcaption align="middle">Caption goes here.</figcaption>
+					</td>
+					<td>
+						<img src="images/image2.png" align="middle" width="400px" />
+						<figcaption align="middle">Caption goes here.</figcaption>
+					</td>
+				</tr>
+				<br>
+				<tr>
+					<td>
+						<img src="images/image3.png" align="middle" width="400px" />
+						<figcaption align="middle">Caption goes here.</figcaption>
+					</td>
+					<td>
+						<img src="images/image4.png" align="middle" width="400px" />
+						<figcaption align="middle">Caption goes here.</figcaption>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+
+
+</body>
+
 </html>
