@@ -40,8 +40,9 @@
 		</p>
 
 		<h2 align="middle">Overview</h2>
-		<p>Give a high-level overview of what you implemented in this homework Think about what you've built as a whole.
-			Share your thoughts on what interesting things you've learned from completing the homework.</p>
+		<p>In this homework, we learned a lot about different sampling methods for showing 2D images on a computer
+			screen. We learned how to implement them, as well as some optimizations in order to improve the efficiency
+			for their algorithms.</p>
 
 		<h2 align="middle">Section I: Rasterization</h2>
 
@@ -158,15 +159,56 @@
 
 		</section>
 
+		<section>
+			<h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
+			<p>Level sampling makes use of mipmap levels in order to reduce jaggies and prevent images from artifacting.
+				Level 0 sampling simply uses the highest-resolution texture as a texture map. Level nearest varies the
+				level of mipmap used by attempting to estimate the changes in uv coordinates and smooth out textures
+				that appear 'farther' in the image. Lastly, level linear is just another layer of smoothing by
+				estimating the texture's pixel through a weighted average of the level above and below.</p>
+			<p>Throughout the homework, I've implemented various sampling techniques. The first method was increasing
+				the number of samples per pixel to reduce antialising. This method works great, however, is extremly
+				inefficient at even 9x or 16x samples per pixels as it requires a much larger buffer. Pixel sampling for
+				textures also works well, and averaging from the nearby textures perform a very good job of smoothing
+				out textures at lower resolutions. Lastly, level sampling for mipmaps. Mipmaps use a bit of additional
+				memory, and linear sampling also requires slightly more computation, however, the combination of these
+				two result in an excellent images as a lot of the data can be pre-computed.</p>
+			<p>Below are 4 pictures of me attempting to wakeboard on a holiday. <em>Figure 1</em> clearly shows major
+				artifacts, and each iteration of the image up to figure 4 shows more and more smoothing based on the
+				sampling methods.</p>
+			<div align="middle">
+				<table style="width: 100%">
+					<tr>
+						<td>
+							<img src="images/Task6_1.png" align="middle" width="400px" />
+							<figcaption align="middle">Fig1: L: Zero. P: Nearest</figcaption>
+						</td>
+						<td>
+							<img src="images/Task6_2.png" align="middle" width="400px" />
+							<figcaption align="middle">Fig2: L: Zero. P: Linear </figcaption>
+						</td>
+					</tr>
+					<br>
+					<tr>
+						<td>
+							<img src="images/Task6_3.png" align="middle" width="400px" />
+							<figcaption align="middle">Fig3: L: Nearest. P: Nearest</figcaption>
+						</td>
+						<td>
+							<img src="images/Task6_4.png" align="middle" width="400px" />
+							<figcaption align="middle">Fig4: L: Nearest. P: Linear</figcaption>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</section>
 
-		<h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
 
-
-
+		<!-- 
 		<h2 align="middle">Section III: Art Competition</h2>
 		<p>If you are not participating in the optional art competition, don't worry about this section!</p>
 
-		<h3 align="middle">Part 7: Draw something interesting!</h3>
+		<h3 align="middle">Part 7: Draw something interesting!</h3> -->
 
 
 
